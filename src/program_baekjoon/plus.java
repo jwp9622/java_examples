@@ -22,7 +22,7 @@ public class plus {
     }
     public static int point(int x1, int y1, int r1, int x2, int y2, int r2){
         double d = Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
-       
+        System.out.println("____");
         if(d ==0&& r1==r2){ 
             return -1; //무한이 많은 접점(동일한 원)
         }else if(d==r1+r2 || d == Math.abs(r1-r2)){
