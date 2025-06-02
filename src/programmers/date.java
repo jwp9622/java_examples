@@ -1,6 +1,8 @@
 package programmers;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -22,6 +24,15 @@ public class date {
 		
 		System.out.println("------------------------");
 		
+		LocalDateTime time = LocalDateTime.now();
+		LocalDateTime time2 = time.minusMinutes(10);
+		
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("h m");
+		String time_format = time2.format(df);
+
+		System.out.println("time_format="+time_format);
+		System.out.println("------------------------");
+		
 		//calendar - 추상클래스(미완성된 메소드, 클래스 new 생성안됨)
 		//Calendar가 스스로 리턴이 안되므로 getInstance를 호출해서 사용
 		//Calnedar 호출시 Gregorian Calendar 에서 getInstance를 인스턴스를 리턴을 해준다.
@@ -38,6 +49,7 @@ public class date {
 		System.out.println(cal.get(Calendar.SECOND)); //초
 		
 		cal.add(Calendar.HOUR, 5); //5시간 이전으로 되돌려줌.원하는 시간으로 되돌릴수 있음.
+		
 		
 		System.out.println("------------------------");
 		
