@@ -61,7 +61,7 @@ public class graph_DFS {
              
         
 		// 시작 정점도 순서에 포함이므로 count 초기값 1 할당
-        count = 1;
+        count = startVertex;
         
         // 깊이 우선 탐색 재귀 시작
         dfs(startVertex);
