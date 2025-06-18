@@ -2,7 +2,7 @@ package program_baekjoon;
 
 import java.util.Stack;
 
-public class dfs_tree {
+public class StackDFS_tree {
 
 	public static void main(String[] args) {
         //1. 트리 생성

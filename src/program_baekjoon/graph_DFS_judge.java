@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 
 //백준   24479번 /알고리즘 수업 - 깊이 우선 탐색 1
-public class graph_DFS {
+public class graph_DFS_judge {
 	
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
