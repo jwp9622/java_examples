@@ -16,6 +16,9 @@ public class gugudan {
             sf.append(a).append("*").append(i).append("=").append(i*a).append("\n");
         }
         System.out.println(sf.toString());
+        
+        char aa = 'a';
+        System.out.println((int)aa);
 	}
 
 }

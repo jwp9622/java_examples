@@ -1,4 +1,4 @@
-package program_baekjoon;
+package program_baekjoon_graph;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -20,7 +20,7 @@ class Node implements Comparable<Node>{
     }
 }
 
-public class min_spanning_tree {
+public class min_spanning_tree_1197 {
 	
     static int [] parent;
     static PriorityQueue<Node> pq;

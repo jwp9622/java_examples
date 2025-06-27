@@ -1,9 +1,9 @@
-package program_baekjoon;
+package program_baekjoon_graph;
 
 import java.util.*;
 import java.io.*;
 
-public class min_spanning_tree_buffered {
+public class min_spanning_tree_buffered_1197 {
     static class Edge implements Comparable<Edge> {
         int from, to, weight;
 

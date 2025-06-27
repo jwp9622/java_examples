@@ -1,110 +1,98 @@
-package program_baekjoon;
+package program_baekjoon_graph;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.StringTokenizer;
-
+import java.io.*;
+import java.util.*;
 
 //백준   24479번 /알고리즘 수업 - 깊이 우선 탐색 1
 public class graph_DFS_judge {
-	
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static StringTokenizer st;
-    static StringBuilder sb = new StringBuilder();
     
     static ArrayList<ArrayList<Integer>> graph = new ArrayList<>(); // 정점들의 정보를 기록할 그래프
-    static int[] check; // 방문한 정점을 기록할 배열
-    static int count; // 방문 순서
-
+    static boolean[] visited; // 방문한 정점을 기록할 배열
+    static int count = 1; // 카운터
+    static int order[];
+    static int vertex;
+    static boolean flag = true;
     public static void main(String[] args) throws IOException {
     	
-    	long first = System.currentTimeMillis();
-    	
-        st = new StringTokenizer(br.readLine());
-
-        int vertex = Integer.parseInt(st.nextToken());
-        int edge = Integer.parseInt(st.nextToken());
-        int startVertex = Integer.parseInt(st.nextToken());
-
-		// 방문한 정점이 최대 정점의 개수만큼 있기 때문에, 정점의 개수만큼의 크기로 배열 생성
-        // index 혼란을 방지하고자 0번 인덱스를 더미 데이터로 활용
-        check = new int[vertex+1];
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
+        
+        vertex = Integer.parseInt(br.readLine());
+        
+		// 정점의 개수만큼의 크기로 배열 생성, 혼란방지 위해 +1
+        visited = new boolean[vertex+1];
 
 		// graph의 index를 정점의 개수만큼 만들어줌
         for(int i =0; i < vertex+1; i++) {
             graph.add(new ArrayList<>());
         }
 
-        for(int i = 0; i < edge; i++) {
-            st = new StringTokenizer(br.readLine());
+        //정점, 간선 입력받음
+        for(int i = 0; i < vertex-1; i++) {
+            st = new StringTokenizer(br.readLine(), " ");
+        	
             int fromVertex = Integer.parseInt(st.nextToken());
             int toVertex = Integer.parseInt(st.nextToken());
-
 			// 무방향이기 때문에 양쪽으로 정보를 추가
             graph.get(fromVertex).add(toVertex);
             graph.get(toVertex).add(fromVertex);
         }
+        /*
+        []
+        [2, 3]
+        [1, 4]
+        [1]
+        [2]
+        */
         
+        				
+        //방문 순서 저장
+        order = new int[vertex];
+        st = new StringTokenizer(br.readLine()," ");
+        for(int i=0; i<vertex;i++) {
+        	order[i] = Integer.parseInt(st.nextToken());
+        }
 
-        // 오름차순을 위해 정렬
-        for(int i = 1; i < graph.size(); i++) {
-            Collections.sort(graph.get(i));
-        }
-        //System.out.println("-----------");
+		for(int i=0;i<graph.size();i++) {
+			System.out.println(graph.get(i));
+		}
         
-        System.out.println(Arrays.toString(check));
-        for(int i=0;i<graph.size();i++) {
-        	System.out.println(graph.get(i));
-        }
-             
-        
-		// 시작 정점도 순서에 포함이므로 count 초기값 1 할당
-        count = startVertex;
-        
-        // 깊이 우선 탐색 재귀 시작
-        dfs(startVertex);
+        // 깊이 우선 탐색 시작
+        dfs(1);
 
-		// 각 인덱스별로 방문 순서가 기록된 배열을 순회하며, 값을 StringBuilder에 저장
-        for(int i = 1; i < check.length; i++) {
-            sb.append(check[i]).append("\n");
-        }
-        System.out.println(sb);
-        
-        long last = System.currentTimeMillis();
-        long time = last-first;
-        
-        System.out.println(time);
-        
+        //정상 방문여부 표시
+		if(flag) {
+			System.out.println(1);
+		} else {
+			System.out.println(0);
+		}       
     }
     
 	// 깊이 우선 탐색 메서드
-    private static void dfs(int vertex) {
-        check[vertex] = count; // 현재 방문하고있는 정점에 순서 저장
-        
-        //System.out.println(Arrays.toString(check));
-        //System.out.println("count="+count+",vertex="+vertex);
-        //System.out.println("-----------111");
-        
-		// 현재 위치한 정점이 갈 수 있는 정점 리스트를 순회
-        for(int i = 0; i < graph.get(vertex).size(); i++) {
-            int newVertex = graph.get(vertex).get(i);
-            
-            //다음 갈 정점을 방문했었는지 체크(0일 경우 방문 X)
-            if(check[newVertex] == 0){
-                count++;
-                //System.out.println("호출 count="+count +",newVertex="+newVertex);
-                
-                dfs(newVertex);
-            }
-        }
+    private static void dfs(int x) {
+		if(visited[x]) return;
+		
+		// x정점 방문
+		visited[x] = true;
+
+		HashSet<Integer> set = new HashSet<>();
+		for(int next : graph.get(x)) {
+			if(visited[next]) continue;
+			set.add(next);
+		}
+		
+		//hash가 0이면 정상적으로 다 검증된것이므로 빠져나감
+		if(set.size() == 0) return;
+		
+		if(set.contains(order[count])) {
+			int a = count++;
+			dfs(order[a]);
+		} else {
+			flag = false;
+		}
             
     }
-    
-    
     
     
 	

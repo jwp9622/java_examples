@@ -1,4 +1,4 @@
-package program_baekjoon;
+package program_baekjoon_graph;
 
 import java.io.*;
 import java.util.*;
@@ -87,7 +87,23 @@ public class graph_BFS {
         //System.out.println(sb);
         
     }
-
+/*
+입력
+5 5 1
+1 4
+1 2
+2 3
+2 4
+3 4
+ 
+출력
+1
+2
+4
+3
+0
+ 
+*/
 	// 깊이 우선 탐색 메서드
     private static void bfs(int vertex) {
     	
@@ -96,10 +112,8 @@ public class graph_BFS {
     	q.add(vertex);
     	visited[vertex] = count;
     	
-    	/*
     	while(!q.isEmpty()) {
     		int a = q.poll();
-    		
     		for(int i=0;i<graph.get(a).size();i++) {
     			int v = graph.get(a).get(i);
     			if(visited[v] ==0) {
@@ -109,8 +123,8 @@ public class graph_BFS {
     			}
     		}
         }
-        */
-    	
+       
+    	/*
     	for(int j=1;j<graph.size();j++) {
     		int a = j;
     		
@@ -122,7 +136,7 @@ public class graph_BFS {
     			}
     		}
     	}
-    	
+    	 */
     	
     	
     }

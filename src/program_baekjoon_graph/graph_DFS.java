@@ -1,4 +1,4 @@
-package program_baekjoon;
+package program_baekjoon_graph;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 
 //백준   24479번 /알고리즘 수업 - 깊이 우선 탐색 1
 public class graph_DFS {
-	
+
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static StringBuilder sb = new StringBuilder();
@@ -21,7 +21,7 @@ public class graph_DFS {
     static int count; // 방문 순서
 
     public static void main(String[] args) throws IOException {
-    	
+
     	long first = System.currentTimeMillis();
     	
         st = new StringTokenizer(br.readLine());
