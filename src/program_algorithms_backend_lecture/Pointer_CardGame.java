@@ -1,4 +1,4 @@
-package program_algorithms_course;
+package program_algorithms_backend_lecture;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -17,7 +17,7 @@ public class Pointer_CardGame {
 		Scanner sc = new Scanner(System.in);
 		Queue<Integer> myQueue = new LinkedList<>();
 		int N = sc.nextInt();
-		for(int i=0;i<=N;i++) { //카드를 큐에 저장
+		for(int i=1;i<=N;i++) { //카드를 큐에 저장
 			myQueue.add(i);
 		}
 		while(myQueue.size() > 1) { //카드가 1장 남을 때까지

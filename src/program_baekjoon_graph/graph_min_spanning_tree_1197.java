@@ -20,7 +20,7 @@ class Node implements Comparable<Node>{
     }
 }
 
-public class min_spanning_tree_1197 {
+public class graph_min_spanning_tree_1197 {
 	
     static int [] parent;
     static PriorityQueue<Node> pq;

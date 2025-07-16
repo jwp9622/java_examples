@@ -10,16 +10,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-import program_baekjoon_graph.graph_floyd_KebinSix_1389.Egde;
-
-
 public class Graph_floyd_NdanLogic_15723_graph {
 
 	static int N,M;
 	static boolean[] visited;
 	static ArrayList<Egde>[] graph;
 	static int size = 26;
-	static boolean map[][] = new boolean[size][size];
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -63,22 +59,7 @@ public class Graph_floyd_NdanLogic_15723_graph {
 			System.out.println(result);
 			
 		}
-		
-		
-/*
-
-3
-a is b
-b is c
-c is d
-
-3
-a is d
-a is c
-d is a
- 
-*/		
-		
+	
 	}
 	
 	// 간선 클래스: 도착 정점과 이익(가중치)
@@ -96,9 +77,7 @@ d is a
 		}
 	}
 	
-	
 	private static boolean floyd(int start, int end) {
-
 		
     	Queue<Egde> pq = new LinkedList<>();
     	pq.add(new Egde(start));
@@ -127,7 +106,6 @@ d is a
         }
     	
     	return false;
-		
 	}	
 	
 		

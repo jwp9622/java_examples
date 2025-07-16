@@ -1,4 +1,4 @@
-package program_algorithms_course;
+package program_algorithms_backend_lecture;
 
 import java.io.*;
 import java.util.*;
